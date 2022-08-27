@@ -1,6 +1,10 @@
-![Avatador](assets/logo.png)
+![Avatador](assets/logo.png) ![Avatador](logo.png)
 
 # Avatador
+[Homepage](https://www.avatador.io) | [Docs](https://hexdocs.pm/avatador) | [Github](https://github.com/ruudvh/avatador)
+
+Super simple avatar generator in Elixir.
+
 ## Options
 - `:background` The background color hex of the avatar, without the hash (#) e.g. `000000`.
 - `:color` The text color hex of the avatar, without the hash (#) e.g. `FFFFFF`.
@@ -31,14 +35,8 @@
     }
 
 ## Supports
-- `:background` is hashed (md5) so that the same `:name` will receive the same `:background` color.
-- Supported color formats include #rgb, #rgba, #rrggbbaa, and #rrggbbaa (thou make sure to omit the `#`-sign).
-
-## Todo
-- RTL support
-- svg to png
-  https://codepen.io/arcaelas-the-looper/pen/wvrqzvm
-  https://stackoverflow.com/questions/11567668/svg-to-canvas-with-d3-js/23667012#23667012
+- Simple cache: `:background` is hashed so that the same `:name` will receive the same `:background` color.
+- Alpha colors: Supported color formats include #rgb, #rgba, #rrggbbaa, and #rrggbbaa (thou make sure to omit the `#`-sign).
 
 ## Installation
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
@@ -53,5 +51,7 @@ end
 ```
 
 ## Development
+- Questions, tips, code fixes, overhauls, and other contributions are very much welcome! Please submit an [issue](https://github.com/ruudvh/avatador/issues) or a [pull request](https://github.com/ruudvh/avatador/pulls).
 - Run tests with `mix test`
 - Create docs with `mix docs`
+
