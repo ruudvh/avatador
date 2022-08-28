@@ -7,7 +7,7 @@ defmodule FormatInputTest do
       name: 10
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">10</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">10</text></svg>)
   end
 
   test ":name as Float" do
@@ -16,7 +16,7 @@ defmodule FormatInputTest do
       name: 10.5
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">10</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">10</text></svg>)
   end
 
   test ":name as Map" do
@@ -25,7 +25,7 @@ defmodule FormatInputTest do
       name: %{john: "cena"}
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":name as List" do
@@ -34,7 +34,7 @@ defmodule FormatInputTest do
       name: ["john", "cena"]
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as true" do
@@ -43,7 +43,7 @@ defmodule FormatInputTest do
       is_rounded: true,
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="500.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="500.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as Integer 1" do
@@ -52,7 +52,7 @@ defmodule FormatInputTest do
       is_rounded: 1,
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="500.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="500.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as Integer > 1" do
@@ -61,7 +61,7 @@ defmodule FormatInputTest do
       is_rounded: 15,
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as Float 1.0" do
@@ -70,7 +70,7 @@ defmodule FormatInputTest do
       is_rounded: 1.0,
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as Float > 1" do
@@ -79,7 +79,7 @@ defmodule FormatInputTest do
       is_rounded: 10.5,
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":is_rounded as String" do
@@ -88,7 +88,7 @@ defmodule FormatInputTest do
       is_rounded: "johncena",
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":rounded as Integer" do
@@ -97,7 +97,7 @@ defmodule FormatInputTest do
       rounded: 50
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="50.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="50.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":rounded as Float" do
@@ -106,7 +106,7 @@ defmodule FormatInputTest do
       rounded: 50.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="50.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="50.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":rounded as String" do
@@ -115,7 +115,7 @@ defmodule FormatInputTest do
       rounded: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":width as Integer" do
@@ -124,7 +124,7 @@ defmodule FormatInputTest do
       width: 20
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":width as Float" do
@@ -133,7 +133,7 @@ defmodule FormatInputTest do
       width: 20.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":width as String" do
@@ -142,7 +142,7 @@ defmodule FormatInputTest do
       width: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":width as String, but integer format" do
@@ -151,7 +151,7 @@ defmodule FormatInputTest do
       width: "20"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":height as Integer" do
@@ -160,7 +160,7 @@ defmodule FormatInputTest do
       height: 20
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":height as Float" do
@@ -169,7 +169,7 @@ defmodule FormatInputTest do
       height: 20.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":height as String" do
@@ -178,7 +178,7 @@ defmodule FormatInputTest do
       height: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":height as String, but integer format" do
@@ -187,7 +187,7 @@ defmodule FormatInputTest do
       height: "20"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="20.0px" height="20.0px" viewBox="0 0 20.0 20.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="20.0" height="20.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":font_size as Integer" do
@@ -196,7 +196,7 @@ defmodule FormatInputTest do
       font_size: 10
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":font_size as Float" do
@@ -205,7 +205,7 @@ defmodule FormatInputTest do
       font_size: 10.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:10.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":font_size as String" do
@@ -214,7 +214,7 @@ defmodule FormatInputTest do
       font_size: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"></text></svg>)
   end
 
   test ":caps value as Integer" do
@@ -224,7 +224,7 @@ defmodule FormatInputTest do
       caps: 1
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":caps value as Integer > 3" do
@@ -234,7 +234,7 @@ defmodule FormatInputTest do
       caps: 4
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":caps value as Float" do
@@ -244,7 +244,7 @@ defmodule FormatInputTest do
       caps: 1.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":caps value as Integer < 0" do
@@ -254,7 +254,7 @@ defmodule FormatInputTest do
       caps: -5
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":caps value as String" do
@@ -264,7 +264,7 @@ defmodule FormatInputTest do
       caps: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Integer" do
@@ -274,7 +274,7 @@ defmodule FormatInputTest do
       bold: 1
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-weight:700;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-weight:700;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Integer > 1" do
@@ -284,7 +284,7 @@ defmodule FormatInputTest do
       bold: 15
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Integer < 1.0" do
@@ -294,7 +294,7 @@ defmodule FormatInputTest do
       bold: -15
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Float" do
@@ -304,7 +304,7 @@ defmodule FormatInputTest do
       bold: 1.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Float > 1.0" do
@@ -314,7 +314,7 @@ defmodule FormatInputTest do
       bold: 15.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as Float < 1.0" do
@@ -324,7 +324,7 @@ defmodule FormatInputTest do
       bold: -15.0
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 
   test ":bold as String" do
@@ -334,6 +334,6 @@ defmodule FormatInputTest do
       bold: "johncena"
     }
 
-    assert Avatador.svg(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+    assert Avatador.avatar(assigns) == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
   end
 end

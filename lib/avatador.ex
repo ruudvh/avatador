@@ -4,10 +4,14 @@ defmodule Avatador do
   """
   @moduledoc since: "0.1.0"
 
-  alias Avatador.Helpers, as: Helpers
+  alias Avatador.Helpers
+  alias Avatador.Helpers.{Color, List}
+  alias Avatador.Avatar
+  alias Avatador.Identicon
 
   @random_colors ["#E284B3", "#FFED8B",  "#681313", "#F3C1C6",  "#735372",  "#009975", "#FFBD39", "#B1E8ED", "#52437B", "#F76262", "#216583", "#293462", "#DD9D52", "#936B93", "#6DD38D", "#888888", "#6F8190", "#BCA0F0", "#AAF4DD", "#96C2ED", "#3593CE", "#5EE2CD", "#96366E", "#E38080"];
   @defaults %{
+    format: "SVG",
     background: "#000000",
     color: "#FFFFFF",
     name: "",
@@ -18,21 +22,49 @@ defmodule Avatador do
     font_size: 250.0,
     font_family: "Montserrat",
     caps: 1,
-    bold: true,
-    text_style: "font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;" }
+    bold: true
+  }
+
+  defstruct(
+    format: @defaults.format,
+    background: @defaults.background,
+    color: @defaults.color,
+    name: @defaults.name,
+    hash: "",
+    hash_integer: "",
+    hash_list: "",
+    is_rounded: @defaults.is_rounded,
+    rounded: @defaults.rounded,
+    width: @defaults.width,
+    height: @defaults.height,
+    font_size: @defaults.font_size,
+    font_family: @defaults.font_family,
+    caps: @defaults.caps,
+    bold: @defaults.bold,
+    text_style: "font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;"
+  )
 
   @doc """
-  Create a SVG from a `Map`.
-
-  Returns `~s()`.
+  Create an avatar or identicon from a `Map` of options.
+  Returns a `~s()` SVG.
 
   ## Examples
 
-      iex> Avatador.svg(%{background: "96C2ED", name: "John Cena"})
+      # Create an avatar SVG with `:background` "#96C2ED" and `name` "John Cena"
+      iex> Avatador.avatar(%{background: "96C2ED", name: "John Cena"})
       ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
 
-      iex> Avatador.svg(%{background: "96C2ED", name: "John Cena", width: "50"})
+      # Create an avatar SVG with `:background` "#96C2ED", `name` "John Cena", and size "50px"
+      iex> Avatador.avatar(%{background: "96C2ED", name: "John Cena", width: "50"})
       ~s(<svg width="50.0px" height="50.0px" viewBox="0 0 50.0 50.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="50.0" height="50.0" rx="0.0" style="fill:#96C2ED" /><text x="50%" y="50%" dy=".1em" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" style="font-size:25.0px;line-height:1;color:#FFFFFF;font-family:Montserrat,sans-serif;">JC</text></svg>)
+
+      # Create an identicon SVG with `:background` "#96C2ED", `name` "John Cena"
+      iex> Avatador.identicon(%{format: "SVG", background: "96C2ED", name: "John Cena"})
+      ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect fill="#96C2ED" x="200" y="100" width="100" height="100"/><rect fill="#96C2ED" x="0" y="200" width="100" height="100"/><rect fill="#96C2ED" x="200" y="200" width="100" height="100"/><rect fill="#96C2ED" x="400" y="200" width="100" height="100"/><rect fill="#96C2ED" x="0" y="300" width="100" height="100"/><rect fill="#96C2ED" x="400" y="300" width="100" height="100"/><rect fill="#96C2ED" x="0" y="400" width="100" height="100"/><rect fill="#96C2ED" x="100" y="400" width="100" height="100"/><rect fill="#96C2ED" x="200" y="400" width="100" height="100"/><rect fill="#96C2ED" x="300" y="400" width="100" height="100"/><rect fill="#96C2ED" x="400" y="400" width="100" height="100"/></svg>)
+
+      # Create an identicon SVG with `:background` "#96C2ED", `name` "John Cena", and size "50px"
+      iex> Avatador.identicon(%{format: "SVG", background: "96C2ED", name: "John Cena", width: "50"})
+      ~s(<svg width="50.0px" height="50.0px" viewBox="0 0 50.0 50.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect fill="#96C2ED" x="20" y="10" width="10" height="10"/><rect fill="#96C2ED" x="0" y="20" width="10" height="10"/><rect fill="#96C2ED" x="20" y="20" width="10" height="10"/><rect fill="#96C2ED" x="40" y="20" width="10" height="10"/><rect fill="#96C2ED" x="0" y="30" width="10" height="10"/><rect fill="#96C2ED" x="40" y="30" width="10" height="10"/><rect fill="#96C2ED" x="0" y="40" width="10" height="10"/><rect fill="#96C2ED" x="10" y="40" width="10" height="10"/><rect fill="#96C2ED" x="20" y="40" width="10" height="10"/><rect fill="#96C2ED" x="30" y="40" width="10" height="10"/><rect fill="#96C2ED" x="40" y="40" width="10" height="10"/></svg>)
 
   ## Arguments
 
@@ -65,37 +97,40 @@ defmodule Avatador do
       }
   """
   @doc since: "0.1.0"
-  def svg(assigns \\ %{}) do
-
-    ints = %{
-      background: "",
-      color: "",
-      name: "",
-      is_rounded: "",
-      rounded: "",
-      width: "",
-      height: "",
-      font_size: "",
-      font_family: "",
-      caps: "",
-      bold: ""}
-
-    assigns = Map.merge(ints, assigns)
-
+  def avatar(assigns \\ %{}) do
     assigns
-    |> sanatize_inputs()
-    |> verify_color()
-    |> verify_background()
-    |> verify_name_create_initials()
-    |> verify_size()
-    |> verify_rounded()
-    |> create_text_style()
-    |> create_svg()
+    |> prelim_steps
+    |> Avatar.render_svg
   end
 
-  defp create_svg(assigns) do
-    ~s(<svg width="#{assigns.width}px" height="#{assigns.height}px" viewBox="0 0 #{assigns.width} #{assigns.height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="#{assigns.width}" height="#{assigns.height}" rx="#{assigns.rounded}" style="fill:#{assigns.background}" /><text x="50%" y="50%" dy=".1em" fill="#{assigns.color}" text-anchor="middle" dominant-baseline="middle" style="#{assigns.text_style}">#{assigns.name}</text></svg>)
+  def identicon(assigns \\ %{}) do
+    format = sanatize_format_input(Map.get(assigns, :format))
+    case format do
+      "PNG" ->
+        assigns
+        |> prelim_steps
+        |> Identicon.render_png
+
+      _ ->
+        assigns
+        |> prelim_steps
+        |> Identicon.render_svg
+    end
   end
+
+  defp prelim_steps(assigns) do
+    assigns
+    |> sanatize_inputs
+    |> create_hash_from_name
+    |> verify_color
+    |> verify_background
+    |> verify_name_create_initials
+    |> verify_size
+    |> verify_rounded
+    |> create_text_style #only needed for SVG
+  end
+
+  defp sanatize_format_input(format), do: format |> Helpers.to_string() |> String.upcase()
 
   defp sanatize_inputs(assigns) do
     # Floats
@@ -116,113 +151,79 @@ defmodule Avatador do
     color = Map.get(assigns, :color) |> Helpers.to_string()
     name = Map.get(assigns, :name) |> Helpers.to_string()
 
-    assigns
-    |> Map.put(:background, background)
-    |> Map.put(:color, color)
-    |> Map.put(:name, name)
-    |> Map.put(:is_rounded, is_rounded)
-    |> Map.put(:rounded, rounded)
-    |> Map.put(:width, width)
-    |> Map.put(:height, height)
-    |> Map.put(:font_size, font_size)
-    |> Map.put(:caps, caps)
-    |> Map.put(:bold, bold)
+    %Avatador{
+      background: background,
+      color: color,
+      name: name,
+      is_rounded: is_rounded,
+      rounded: rounded,
+      width: width,
+      height: height,
+      font_size: font_size,
+      caps: caps,
+      bold: bold,
+    }
   end
 
-  defp verify_color(assigns) do
-    color = Map.get(assigns, :color)
+  defp create_hash_from_name(%Avatador{name: name} = avatador) do
+    hash = Helpers.hash_value(name)
+    hash_integer = Helpers.hash_to_integer(hash)
+    hash_list  = Helpers.hash_to_list(hash)
+    %Avatador{avatador | hash: hash, hash_integer: hash_integer, hash_list: hash_list}
+  end
 
-    if Helpers.is_valid_color_format?("#" <> color) do
-      Map.put(assigns, :color, "#" <> color)
+  defp verify_color(%Avatador{color: color} = avatador) do
+    if Color.is_valid_color_hex?("#" <> color) do
+      %Avatador{avatador | color: "#" <> color}
     else
-      Map.put(assigns, :color, @defaults.color)
+      %Avatador{avatador | color: @defaults.color}
     end
   end
 
-  defp verify_background(assigns) do
-    name = Map.get(assigns, :name)
-    background = Map.get(assigns, :background)
-
-    if Helpers.is_valid_color_format?("#" <> background) do
-      Map.put(assigns, :background, "#" <> background)
+  defp verify_background(%Avatador{background: background} = avatador) do
+    if Color.is_valid_color_hex?("#" <> background) do
+      %Avatador{avatador | background: "#" <> background}
     else
-      Map.put(assigns, :background, Helpers.hashed_from_list(@random_colors, name))
+      color = List.get_by_integer(@random_colors, avatador.hash_integer)
+      %Avatador{avatador | background: color}
     end
   end
 
-  defp verify_name_create_initials(assigns) do
-    caps = Map.get(assigns, :caps)
-    name = Map.get(assigns, :name)
-
+  defp verify_name_create_initials(%Avatador{name: name} = avatador) do
     if String.length(name) >= 1 do
       initials =
         name
         |> Helpers.generate_initials()
-        |> Helpers.maybe_capitalize(caps)
+        |> Helpers.maybe_capitalize(avatador.caps)
 
-      Map.put(assigns, :name, initials)
+      %Avatador{avatador | name: initials}
     else
-      Map.put(assigns, :name, @defaults.name)
+      %Avatador{avatador | name: @defaults.name}
     end
   end
 
-  defp verify_size(assigns) do
-    width = Map.get(assigns, :width)
-    height = Map.get(assigns, :height)
+  defp verify_size(%Avatador{width: 0.0, height: 0.0} = avatador), do: %Avatador{avatador | height: @defaults.height, width: @defaults.width}
+  defp verify_size(%Avatador{width: 0.0, height: height} = avatador), do: %Avatador{avatador | height: height, width: height}
+  defp verify_size(%Avatador{width: width, height: 0.0} = avatador), do: %Avatador{avatador | height: width, width: width}
+  defp verify_size(%Avatador{} = avatador), do: avatador
 
-    case [width, height] do
-      [0.0, 0.0] ->
-        assigns
-        |> Map.put(:width, @defaults.width)
-        |> Map.put(:height, @defaults.height)
+  defp verify_rounded(%Avatador{is_rounded: true, rounded: rounded} = avatador) when rounded > 0.0, do: avatador
+  defp verify_rounded(%Avatador{rounded: rounded} = avatador) when rounded > 0.0, do: %Avatador{avatador | is_rounded: true}
+  defp verify_rounded(%Avatador{is_rounded: true, width: width, height: height} = avatador), do: %Avatador{avatador | rounded: min(width, height)}
+  defp verify_rounded(%Avatador{} = avatador), do: %Avatador{avatador | rounded: @defaults.rounded, is_rounded: @defaults.is_rounded}
 
-      [0.0, height] ->
-        assigns
-        |> Map.put(:width, height)
-        |> Map.put(:height, height)
+  defp create_text_style(%Avatador{bold: bold, font_size: font_size, font_family: font_family} = avatador) do
+    width = avatador.width
+    height = avatador.height
+    color = avatador.color
 
-      [width, 0.0] ->
-        assigns
-        |> Map.put(:width, width)
-        |> Map.put(:height, width)
-
-      [width, height] ->
-        assigns
-        |> Map.put(:width, width)
-        |> Map.put(:height, height)
-    end
-  end
-
-  defp verify_rounded(assigns) do
-    width = Map.get(assigns, :width)
-    height = Map.get(assigns, :height)
-    rounded = Map.get(assigns, :rounded)
-    is_rounded = Map.get(assigns, :is_rounded)
-
-    # If no value provided we will assume fully rounded (i.e. same px as width/height)
-    cond do
-      is_rounded and rounded > 0.0 -> assigns
-      rounded > 0.0 -> Map.put(assigns, :is_rounded, true)
-      is_rounded -> Map.put(assigns, :rounded, min(width, height))
-      true -> Map.put(assigns, :rounded, 0.0) |> Map.put(:is_rounded, false)
-    end
-  end
-
-  defp create_text_style(assigns) do
-    width = Map.get(assigns, :width)
-    height = Map.get(assigns, :height)
-    color = Map.get(assigns, :color)
-    bold = Map.get(assigns, :bold)
-    font_size = Map.get(assigns, :font_size)
-    font_family = Map.get(assigns, :font_family)
-
-    font_size_style = if font_size != 0.0, do: "font-size:#{font_size}px;", else: "font-size:#{min(width, height) / 2}px;"
+    font_size_style = if font_size == 0.0, do: "font-size:#{min(width, height) / 2}px;", else: "font-size:#{font_size}px;"
     font_line_height_style = "line-height:1;"
     font_color_style = "color:#{color};"
     font_bolt_style = if bold == true, do: "font-weight:700;", else: ""
-    font_family_style = if font_family != "", do: "font-family:#{font_family},sans-serif;", else: "font-family:Montserrat,sans-serif;"
+    font_family_style = if String.length(font_family) == 0, do: "font-family:Montserrat,sans-serif;", else: "font-family:#{font_family},sans-serif;"
 
     text_style = "#{font_size_style}#{font_line_height_style}#{font_color_style}#{font_bolt_style}#{font_family_style}"
-    Map.put(assigns, :text_style, text_style)
+    %Avatador{avatador | text_style: text_style}
   end
 end

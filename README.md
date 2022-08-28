@@ -6,6 +6,7 @@
 Super simple avatar generator in Elixir.
 
 ## Options
+- `:format` SVG or PNG. PNG is only supported with `Avatador.identicons`.
 - `:background` The background color hex of the avatar, without the hash (#) e.g. `000000`.
 - `:color` The text color hex of the avatar, without the hash (#) e.g. `FFFFFF`.
 - `:name` The name/username/email of the entity you want the avatar's initials to represent.
@@ -21,6 +22,7 @@ Super simple avatar generator in Elixir.
 ## Defaults
 
     %{
+      format: "SVG"
       background: "#000000",
       color: "#FFFFFF",
       name: "",
@@ -35,8 +37,9 @@ Super simple avatar generator in Elixir.
     }
 
 ## Supports
-- Simple cache: `:background` is hashed so that the same `:name` will receive the same `:background` color.
+- Simple simple cache: `:background` is hashed so that the same `:name` will receive the same `:background` color.
 - Alpha colors: Supported color formats include #rgb, #rgba, #rrggbbaa, and #rrggbbaa (thou make sure to omit the `#`-sign).
+- Avatars (`Avatador.avatar`) and GitHub-like identicons (`Avatador.identicon`).
 
 ## Installation
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
@@ -50,8 +53,10 @@ def deps do
 end
 ```
 
+## Acknowledgements and Credits
+- The identicons code is based on [identicon](https://github.com/rbishop/identicon).
+
 ## Development
 - Questions, tips, code fixes, overhauls, and other contributions are very much welcome! Please submit an [issue](https://github.com/ruudvh/avatador/issues) or a [pull request](https://github.com/ruudvh/avatador/pulls).
 - Run tests with `mix test`
 - Create docs with `mix docs`
-

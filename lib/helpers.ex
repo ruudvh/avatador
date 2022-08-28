@@ -1,4 +1,6 @@
 defmodule Avatador.Helpers do
+  require Integer
+
   @moduledoc """
   Helper functions for Avatador.
   """
@@ -11,14 +13,10 @@ defmodule Avatador.Helpers do
   `nil` returns `nil`, all else returns `""` (empty string).
   """
   @doc since: "0.1.0"
-  def to_string(value) do
-    cond do
-      is_float(value) -> Float.to_string(value)
-      is_integer(value) -> Integer.to_string(value)
-      is_binary(value) -> value
-      true -> ""
-    end
-  end
+  def to_string(value) when is_float(value), do: Float.to_string(value)
+  def to_string(value) when is_integer(value), do: Integer.to_string(value)
+  def to_string(value) when is_binary(value), do: value
+  def to_string(_), do: ""
 
   @doc """
   Convert a `value` to `Float`.
@@ -27,14 +25,10 @@ defmodule Avatador.Helpers do
   All else returns `0.0`.
   """
   @doc since: "0.1.0"
-  def to_float(value) do
-    cond do
-      is_float(value) -> value
-      is_integer(value) -> value / 1
-      is_binary(value) -> binary_to_float(value)
-      true -> 0.0
-    end
-  end
+  def to_float(value) when is_float(value), do: value
+  def to_float(value) when is_integer(value), do: value / 1
+  def to_float(value) when is_binary(value), do: binary_to_float(value)
+  def to_float(_), do: 0.0
 
   defp binary_to_float(value) do
     case Float.parse(value) do
@@ -50,14 +44,10 @@ defmodule Avatador.Helpers do
   All else returns `0`.
   """
   @doc since: "0.1.0"
-  def to_integer(value) do
-    cond do
-      is_float(value) -> trunc(value)
-      is_integer(value) -> value
-      is_binary(value) -> binary_to_integer(value)
-      true -> 0
-    end
-  end
+  def to_integer(value) when is_float(value), do: trunc(value)
+  def to_integer(value) when is_integer(value), do: value
+  def to_integer(value) when is_binary(value), do: binary_to_integer(value)
+  def to_integer(_), do: 0
 
   defp binary_to_integer(value) do
     case Integer.parse(value) do
@@ -84,35 +74,22 @@ defmodule Avatador.Helpers do
   def to_boolean(_), do: false
 
   @doc """
-  Checks if given `color` is valid color hex i.e. `#FFFFFF`.
+  Hash a `string`.
   """
   @doc since: "0.1.0"
-  def is_valid_color_format?(color) do
-    if !is_nil(color) and
-       is_binary(color) and
-       (String.length(color) == 4 or String.length(color) == 5 or String.length(color) == 7 or String.length(color) == 9) and
-       is_valid_hex_format?(color), do: true, else: false
-  end
-
-  defp is_valid_hex_format?(hex) do
-    # https://regex101.com/r/RS3uAs/2
-    Regex.match?(~r/#[a-f\d]{3}(?:[a-f\d]?|(?:[a-f\d]{3}(?:[a-f\d]{2})?)?)\b/i, hex)
-  end
+  def hash_value(string), do: :crypto.hash(:md5, string)
 
   @doc """
-  Get item from `list[]` based on a hashed `value`.
+  Convert a `hash` to `Integer`.
   """
   @doc since: "0.1.0"
-  def hashed_from_list(list, value) do
+  def hash_to_integer(hash), do: hash |> :crypto.bytes_to_integer()
 
-    hash_key =
-      :crypto.hash(:sha, value)
-      |> binary_part(0, 6)
-      |> :crypto.bytes_to_integer()
-      |> rem(Enum.count(list))
-
-    Enum.at(list, hash_key)
-  end
+  @doc """
+  Convert a `hash` to `List`.
+  """
+  @doc since: "0.1.0"
+  def hash_to_list(hash), do: hash |> :binary.bin_to_list()
 
   @doc """
   Generate the initials for a `String`.
@@ -142,5 +119,4 @@ defmodule Avatador.Helpers do
   def maybe_capitalize(string, 2) when is_binary(string), do: String.downcase(string)
   def maybe_capitalize(string, 3) when is_binary(string), do: string
   def maybe_capitalize(string, _) when is_binary(string), do: String.upcase(string)
-
 end
