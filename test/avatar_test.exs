@@ -2,8 +2,9 @@ defmodule AvatarTest do
   use ExUnit.Case
   doctest Avatador
 
-  # can't add one with zero options due to random color
-  # todo test "create a svg with no options provided" do
+  test "create a svg with no options provided" do
+    assert Avatador.avatar() == ~s(<svg width="500.0px" height="500.0px" viewBox="0 0 500.0 500.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0"><rect x="0" y="0" width="500.0" height="500.0" rx="0.0" style="fill:rgba\(212,29,140,1\)" /><text x="50%" y="50%" dy=".1em" fill="rgba\(255,255,255,1\)" text-anchor="middle" dominant-baseline="middle" style="font-size:250.0px;line-height:1;color:rgba\(255,255,255,1\);font-family:Montserrat,sans-serif;"></text></svg>)
+  end
 
   test "create a svg with only background provided" do
     assigns = %{
