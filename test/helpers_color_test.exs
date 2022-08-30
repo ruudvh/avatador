@@ -65,4 +65,10 @@ defmodule HelpersColorTest do
 
     assert Color.hex_to_rgba(color) == %{r: 153, g: 153, b: 204, a: 1}
   end
+
+  test "Hex with lowercase #16a979 to rgba()" do
+    color = "#16a979"
+
+    assert Color.hex_to_rgba(color) == %{r: 22, g: 169, b: 121, a: 1}
+  end
 end

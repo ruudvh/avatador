@@ -179,8 +179,8 @@ defmodule Avatador do
     font_family = Map.get(assigns, :font_family) |> Helpers.to_string()
 
     %Avatador{
-      background: background,
-      color: color,
+      background: "#" <> background,
+      color: "#" <> color,
       name: name,
       is_rounded: is_rounded,
       rounded: rounded,
@@ -201,8 +201,8 @@ defmodule Avatador do
   end
 
   defp verify_color(%Avatador{color: color} = avatador) do
-    rgba = if Color.is_valid_color_hex?("#" <> color) do
-      Color.hex_to_rgba("#" <> color)
+    rgba = if Color.is_valid_color_hex?(color) do
+      Color.hex_to_rgba(color)
     else
       # Default white
       %{r: 255, g: 255, b: 255, a: 1}
@@ -212,8 +212,8 @@ defmodule Avatador do
   end
 
   defp verify_background(%Avatador{background: background} = avatador) do
-    rgba = if Color.is_valid_color_hex?("#" <> background) do
-      Color.hex_to_rgba("#" <> background)
+    rgba = if Color.is_valid_color_hex?(background) do
+      Color.hex_to_rgba(background)
     else
       # Default random
       [r, g, b | _] = avatador.hash_list

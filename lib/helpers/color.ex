@@ -25,7 +25,7 @@ defmodule Avatador.Helpers.Color do
     https://github.com/barakyo/color_utils
   """
   def hex_to_rgba(<<"#", hex::binary>>) do
-    hex_to_rgba(hex)
+    hex_to_rgba(String.upcase(hex)) # upcase hex value for the lookup at hex_to_decimal
   end
 
   # RRGGBBAA
@@ -69,6 +69,7 @@ defmodule Avatador.Helpers.Color do
   end
 
   defp hex_to_decimal(hex_value) do
+
     hex_to_dec_symbols = %{
       "0" => 0,
       "1" => 1,
