@@ -4,6 +4,8 @@ defmodule Avatador.MixProject do
   @github_url "https://github.com/ruudvh/avatador"
   @homepage_url "https://www.avatador.io"
   @docs_url "https://hexdocs.pm/avatador"
+
+  @name "Avatador"
   @version "0.1.0"
 
   def project do
@@ -16,19 +18,22 @@ defmodule Avatador.MixProject do
       package: package(),
       deps: deps(),
       docs: docs(),
+      source_url: @github_url,
+      homepage_url: @homepage_url,
     ]
   end
 
   defp description do
     """
-    Super simple avatar generator in Elixir.
+    Super simple avatar and (Github-like) identicon generator in Elixir.
     """
   end
 
   defp package do
     [
-      maintainers: ["Ruud van Houtum"],
-      contributors: ["Ruud van Houtum"],
+      name: @name,
+      maintainers: ["Ruud"],
+      contributors: ["Ruud"],
       licenses: ["MIT"],
       links: %{
           "Home" => @homepage_url,
@@ -41,7 +46,7 @@ defmodule Avatador.MixProject do
     [
       main: "readme",
       logo: "logo.png",
-      name: "Avatador",
+      name: @name,
       source_ref: "v#{@version}",
       canonical: @homepage_url,
       source_url: @github_url,
@@ -61,7 +66,7 @@ defmodule Avatador.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.24", only: :dev, runtime: false},
-      {:egd, github: "erlang/egd"}
+      {:egd, github: "erlang/egd", optional: true}, # Erlang Graphic Drawer, for PNG export of identicons
     ]
   end
 end

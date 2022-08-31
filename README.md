@@ -42,13 +42,14 @@ Super simple avatar generator in Elixir.
 - Can create avatars and GitHub-like identicons.
 
 ## Installation
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `avatador` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `avatador` to your list of dependencies in `mix.exs`.
+If you want PNG support for the identicons, you will also need to add `:egd`.
 
 ```elixir
 def deps do
   [
-    {:avatador, "~> 0.1.0"}
+    {:avatador, "~> 0.1.0"},
+    {:egd, github: "erlang/egd", optional: true}, # Erlang Graphic Drawer, for PNG export of identicons
   ]
 end
 ```

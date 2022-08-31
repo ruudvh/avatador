@@ -319,21 +319,29 @@ defmodule Avatador do
     ~s(<svg style="border-radius:#{rounded}px;" width="#{width}px" height="#{height}px" viewBox="0 0 #{width} #{height}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0">#{svg_blocks}</svg>)
   end
 
-  defp render_identicon_png(%Avatador{background_rgba: background_rgba, pixels: pixels, width: width, height: height}) do
-    # Create image object. `trunc` to convert floats to integers.
-    image = :egd.create(trunc(width), trunc(height))
+  # :edg is an optional module
+  # if not available just generate SVG
+  if Code.ensure_loaded?(:egd) do
+    defp render_identicon_png(%Avatador{background_rgba: background_rgba, pixels: pixels, width: width, height: height}) do
+      # Create image object. `trunc` to convert floats to integers.
+      image = :egd.create(trunc(width), trunc(height))
 
-    # Set color object
-    %{r: r, g: g, b: b, a: _a} = background_rgba
-    fill = :egd.color({r, g, b})
+      # Set color object
+      %{r: r, g: g, b: b, a: _a} = background_rgba
+      fill = :egd.color({r, g, b})
 
-    # Create a rectangle for each "pixel"
-    Enum.each(pixels, fn({start, stop}) ->
-      :egd.filledRectangle(image, start, stop, fill)
-    end)
+      # Create a rectangle for each "pixel"
+      Enum.each(pixels, fn({start, stop}) ->
+        :egd.filledRectangle(image, start, stop, fill)
+      end)
 
-    # Render image to base64
-    :egd.render(image, :png) |> Base.encode64
+      # Render image to base64
+      :egd.render(image, :png) |> Base.encode64
+    end
+  else
+    defp render_identicon_png(%Avatador{} = avatador) do
+      render_identicon_svg(avatador)
+    end
   end
 
 end
