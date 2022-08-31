@@ -4,8 +4,6 @@ defmodule Avatador.MixProject do
   @github_url "https://github.com/ruudvh/avatador"
   @homepage_url "https://www.avatador.io"
   @docs_url "https://hexdocs.pm/avatador"
-
-  @name "Avatador"
   @version "0.1.0"
 
   def project do
@@ -31,7 +29,6 @@ defmodule Avatador.MixProject do
 
   defp package do
     [
-      name: @name,
       maintainers: ["Ruud"],
       contributors: ["Ruud"],
       licenses: ["MIT"],
@@ -46,7 +43,7 @@ defmodule Avatador.MixProject do
     [
       main: "readme",
       logo: "logo.png",
-      name: @name,
+      name: "Avatador",
       source_ref: "v#{@version}",
       canonical: @homepage_url,
       source_url: @github_url,
