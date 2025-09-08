@@ -1,7 +1,7 @@
 ![Avatador](assets/logo.png) ![Avatador](logo.png)
 
 # Avatador
-[Homepage](https://www.avatador.io) | [Docs](https://hexdocs.pm/avatador) | [Github](https://github.com/ruudvh/avatador)
+[Docs](https://hexdocs.pm/avatador) | [Github](https://github.com/ruudvh/avatador)
 
 Super simple avatar generator in Elixir.
 
